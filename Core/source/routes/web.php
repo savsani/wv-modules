@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Core\Http\Controllers\BrandAssetController;
+
+// Serves this module's bundled default brand images — the fallback used
+// by <x-branding.logo> / <x-branding.logo-full> when the host app hasn't
+// published its own at public/images/brand/.
+Route::get('/core/brand/{file}', [BrandAssetController::class, 'show'])->name('core.brand-asset');
 
 // Example/showcase pages are intentionally public — the Core module must
 // be usable to test its UI components without the Auth module installed
