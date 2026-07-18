@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
-use Modules\Admin\Http\Controllers\ModuleManager\ModuleManagerController;
 use Modules\Admin\Http\Controllers\Permissions\PermissionController;
 use Modules\Admin\Http\Controllers\Roles\RoleController;
 use Modules\Admin\Http\Controllers\Users\ImpersonateController;
@@ -53,8 +52,5 @@ Route::middleware(array_filter([
         Route::post('/users/{user}/impersonate', [ImpersonateController::class, 'take'])
             ->middleware('permission:users.impersonate')
             ->name('users.impersonate');
-
-        Route::get('/module-manager', [ModuleManagerController::class, 'index'])
-            ->name('module-manager.index');
     });
 });

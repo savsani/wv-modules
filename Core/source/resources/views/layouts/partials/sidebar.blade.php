@@ -52,9 +52,10 @@
             @php
                 $hasAdmin = \Nwidart\Modules\Facades\Module::has('Admin') && \Nwidart\Modules\Facades\Module::isEnabled('Admin');
                 $hasActivityLog = \Nwidart\Modules\Facades\Module::has('ActivityLog') && \Nwidart\Modules\Facades\Module::isEnabled('ActivityLog');
+                $hasModuleManager = \Nwidart\Modules\Facades\Module::has('ModuleManager') && \Nwidart\Modules\Facades\Module::isEnabled('ModuleManager');
             @endphp
 
-            @if ($hasAdmin || $hasActivityLog)
+            @if ($hasAdmin || $hasActivityLog || $hasModuleManager)
                 @hasrole('admin')
                     <p
                         class="overflow-hidden px-3 pt-4 pb-1 text-xs font-semibold tracking-wider whitespace-nowrap text-gray-400 uppercase dark:text-gray-500"
@@ -75,6 +76,10 @@
 
                     @if ($hasActivityLog)
                         @include('activitylog::partials.nav')
+                    @endif
+
+                    @if ($hasModuleManager)
+                        @include('modulemanager::partials.nav')
                     @endif
                 @endhasrole
             @endif
